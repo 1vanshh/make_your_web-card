@@ -40,8 +40,23 @@
                     <object data="img/email.svg" type="image/svg+xml"></object> <!-- Иконка Lolzteam с названием "lolzteam.svg" из папки "assets" -->
                     <a href="mailto:shamaev.ivan2005@gmail.com">shamaev.ivan2005@gmail.com</a>  <!-- Текст в блоке со ссылкой на Вашу страницу -->
                 </div>
+                <button id="contactButton">Контакт</button> 
             </div>
         </div>
     </main>
+    <script>
+        // Получаем ссылку на кнопку
+        var contactButton = document.getElementById('contactButton');
+    
+        // Добавляем обработчик события для клика по кнопке
+        contactButton.addEventListener('click', function() {
+            // Номер телефона, который вы хотите добавить
+            var phoneNumber = '+1234567890';
+    
+            // Открываем ссылку с номером телефона
+            window.location.href = 'tel:' + phoneNumber;
+        });
+    </script>
 </body>
+
 </html>
