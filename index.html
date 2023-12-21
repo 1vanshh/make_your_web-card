@@ -51,8 +51,8 @@
             var contactName = 'John Doe';  // Имя контакта
             var phoneNumber = '+1234567890';
     
-            // Генерация ссылки для добавления контакта в телефонную книгу
-            var contactLink = 'sms:' + phoneNumber + '?body=Привет,%20' + contactName;
+            // Генерация ссылки для открытия контакта в телефонной книге
+            var contactLink = 'tel:' + phoneNumber;
     
             // Открываем ссылку
             window.location.href = contactLink;
