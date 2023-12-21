@@ -45,16 +45,17 @@
         </div>
     </main>
     <script>
-        // Получаем ссылку на кнопку
         var contactButton = document.getElementById('contactButton');
     
-        // Добавляем обработчик события для клика по кнопке
         contactButton.addEventListener('click', function() {
-            // Номер телефона, который вы хотите добавить
+            var contactName = 'John Doe';  // Имя контакта
             var phoneNumber = '+1234567890';
     
-            // Открываем ссылку с номером телефона
-            window.location.href = 'tel:' + phoneNumber;
+            // Генерация ссылки для добавления контакта в телефонную книгу
+            var contactLink = 'sms:' + phoneNumber + '?body=Привет,%20' + contactName;
+    
+            // Открываем ссылку
+            window.location.href = contactLink;
         });
     </script>
 </body>
