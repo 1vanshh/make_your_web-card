@@ -44,20 +44,38 @@
             </div>
         </div>
     </main>
-    <script>
-        var contactButton = document.getElementById('contactButton');
-    
-        contactButton.addEventListener('click', function() {
-            var contactName = 'John Doe';  // Имя контакта
-            var phoneNumber = '+1234567890';
-    
-            // Генерация ссылки для открытия контакта в телефонной книге
-            var contactLink = 'tel:' + phoneNumber;
-    
-            // Открываем ссылку
-            window.location.href = contactLink;
-        });
-    </script>
+    <button id="contactButton">Контакт</button>
+
+<script>
+    var contactButton = document.getElementById('contactButton');
+
+    contactButton.addEventListener('click', function() {
+        var contactName = 'John Doe';  // Имя контакта
+        var phoneNumber = '+1234567890';
+
+        // Создаем содержимое VCF-файла
+        var vcfContent = 'BEGIN:VCARD\n' +
+                         'VERSION:3.0\n' +
+                         'FN:' + contactName + '\n' +
+                         'TEL:' + phoneNumber + '\n' +
+                         'END:VCARD';
+
+        // Создаем Blob (бинарные данные) из текстового содержимого
+        var blob = new Blob([vcfContent], { type: 'text/vcard;charset=utf-8' });
+
+        // Генерируем ссылку для скачивания VCF-файла
+        var downloadLink = document.createElement('a');
+        downloadLink.href = window.URL.createObjectURL(blob);
+        downloadLink.download = 'contact.vcf';
+        
+        // Добавляем ссылку на страницу и эмулируем клик для запуска скачивания
+        document.body.appendChild(downloadLink);
+        downloadLink.click();
+        
+        // Удаляем ссылку после скачивания
+        document.body.removeChild(downloadLink);
+    });
+</script>
 </body>
 
 </html>
